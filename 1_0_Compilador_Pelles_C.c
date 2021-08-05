@@ -1,9 +1,11 @@
 //Compilador Pelles C
+
 #include <stdio.h> //biblioteca de entrada STandarD Input/Output Header
   
 int main (void) { 
 	//main é a função principal - formato pode variar conforme o compilador
 	//void - sem retorno
+	
 	int n;
 	printf("Numero? ");
 	scanf("%d", &n); // ("formatação", &variavel1, "variavel2)
@@ -19,5 +21,5 @@ int main (void) {
 //Endereço - &
 //Lógica - falso = 0 e verdadeiro = 1, todo valor diferente de 0 é considerado verdadeiro
 //Divisão ex. 7/2 == 3 e 7/2.0 == 3.5
-//caracteres especiaia - controle: \a, \b, \n, \r, \t, \0 (char acaba com \0), \', \", \\
-//caracteres especiaia - formato: %c, %d, %o (octal), %x (hexadecimal), %X (hexadecimal), %f, %1f, %%
+//caracteres especiais - controle: \a, \b, \n, \r, \t, \0 (char acaba com \0), \', \", \\
+//caracteres especiais - formato: %c, %d, %o (octal), %x (hexadecimal), %X (hexadecimal), %f, %1f, %%
