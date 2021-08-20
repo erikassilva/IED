@@ -22,6 +22,5 @@ int main(void){
 	return 0;
 }
 
-/*Nesse código o laço for registra a entrada digitada no teclado e a cada chamada do empilha
-ele sobrescreve o registro anterior na pilha, considerando somente a última string chamada.*/
+/*Porque o conteúdo lido em s não retorna o endereço de memória a cada laço for realizado.*/
 
