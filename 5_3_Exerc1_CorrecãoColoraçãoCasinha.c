@@ -1,4 +1,7 @@
-//Exemplo 6 - Coloração casinha (Pelles)
+/*Exercicio 1 - Exemplo 6 – Programa Principal Coloração
+Execute o programa do Exemplo 6 e veja o que acontece quando o usuário 
+tenta preencher uma região com a mesma cor que ela já tem.
+Altere a função colorir() para corrigir o problema (Pelles)*/
 
 #include <stdio.h>
 #include <conio.h>
@@ -39,8 +42,8 @@ void exiba(int I[dim][dim]){
 void colorir (int I [dim] [dim], int i, int j, int n) {
 	Fila F = fila(dim*dim);
 	int a = I [i] [j];
-	I [i] [j] = n;
-	enfileira (par (i,j),F);
+	if (I [i][j] != n)
+		enfileira (par (i,j),F);
 	while( !vaziaf(F) ) {
 		int p = desenfileira(F);
 		i = lin(p);
