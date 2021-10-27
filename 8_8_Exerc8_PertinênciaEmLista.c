@@ -1,9 +1,10 @@
-/*Exercício 7. Último item da lista
-Crie a função ultimo(L), que devolve o último item da lista L (note que, se a lista estiver
-vazia, deve ocorrer um erro fatal). Em seguida, faça um programa para testar essa função*/
+/*Exercício 8. Pertinência em lista
+Crie a função pertence(x,L), que verifica se o item x está armazenado na lista L. Em
+seguida, faça um programa para testar essa função*/
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef int Item;
 typedef struct no {
@@ -27,22 +28,24 @@ void exibe (Lista L){
     printf("\b\b]");
 }
 
-int ultimo(Lista L){
-    int last = 0;
-    if (L == NULL) puts ("Lista vazia!");
+void pertence(int x, Lista L){
+    int count = 0;
     while (L != NULL){
-        last = L->item;
+        int c = L->item;
+        if ( x == c ) count++;
         L = L->prox;
     }
-    return last;
+    if (count >=1)
+        printf("O numero %d pertence a lista!", x);
+    else printf("O numero %d nao pertence a lista!", x);
 }
 
 int main(void){
+    int x;
     Lista I = no(3, no(1, no(5, NULL)));
-    Lista H = NULL;
     exibe(I);
-    exibe(H);
-    printf("\nultimo item = %d\n", ultimo(I));
-    printf("\nultimo item = %d\n", ultimo(H));
+    printf("\nDigite um numero: ");
+    scanf("%d", &x);
+    pertence(x, I);
     return 0;
 }
