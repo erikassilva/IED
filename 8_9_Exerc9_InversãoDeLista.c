@@ -83,8 +83,7 @@ void exibe (Lista L){
 void inversa(Lista L){
     Pilha P = pilha(10);
     while(L != NULL){
-        int aux = L->item;
-        empilha(aux, P);
+        empilha(L->item, P);
         L = L->prox;
     }
     printf("[");
