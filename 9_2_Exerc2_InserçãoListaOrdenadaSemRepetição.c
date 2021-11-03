@@ -19,10 +19,9 @@ Lista no(Item x, Lista p) {
 	return;
 }
 
-void ins_sr(Item x, Lista *L) {
+void ins(Item x, Lista *L) {
 	while(*L != NULL && (*L) -> item < x)
-		if ((*L)->item != x)
-			L = &(*L) -> prox;
+		L = &(*L) -> prox;
 	*L = no(x,*L);
 }
 
@@ -35,15 +34,39 @@ void exibe(Lista L) {
 	printf("\b\b]");
 }
 
+bool pertence(int r, Lista L) {
+	int i = 0;
+	while(L != NULL){
+		i = L -> item;
+		if(r == i){
+			return 1;
+		}
+		L = L -> prox;
+	}	
+	return 0;
+}
+
+void ins_sr(int x, Lista L) {
+	if(pertence(x, L) == 1) puts("Numero ja na lista.");
+	else ins(x, &L);
+}
+
 int main(void) {
 	int x, ask=0;
 	Lista I = NULL;
-	ins_sr(4, &I);
-	ins_sr(1, &I);
-	ins_sr(3, &I);
-	ins_sr(5, &I);
-	ins_sr(3, &I);
+	ins (4, &I);
+	ins (1, &I);
+	ins (3, &I);
+	ins (5, &I);
+	ins (2, &I);
 	exibe(I);
-	
+	do {
+		printf("\n\nNumero a ser inserido:... ");
+		scanf("%d", &x);
+		ins_sr(x, I);
+		printf("Deseja continuar inserindo?...\n[1] - sim\n[2] - nao\n");
+		scanf("%d", &ask);
+	}while(ask == 1);
+	exibe(I);
 	return 0;
 }

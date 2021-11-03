@@ -18,13 +18,12 @@ Lista no (Item x, Lista p) {
     return n;
 }
 
-int ins_rec (Item x, Lista *L){
-    if ( *L != NULL && (*L)->item < x)
+void ins_rec (Item x, Lista *L){
+    if ( L != NULL && (*L)->item < x){
         L = &(*L)->prox;
-        return ins_rec (x, L);
-    //return ( *L = no(x, *L));
-    //return ( *L = no(x, *L));
-    return 0;
+        ins_rec(x, *L);
+    }
+    *L = no(x, *L);
 }
 
 void exibe (Lista L){
