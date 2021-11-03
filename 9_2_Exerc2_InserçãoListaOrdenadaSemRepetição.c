@@ -19,15 +19,11 @@ Lista no(Item x, Lista p) {
 	return;
 }
 
-void ins_sr (Item x, Lista *L) {
-	int i;
-	while(*L != NULL && (*L) -> item < x){
-		i = (*L) -> item;
-		if(x == i){
+void ins_sr(Item x, Lista *L) {
+	while(*L != NULL && (*L) -> item < x)
+		if ((*L)->item != x)
 			L = &(*L) -> prox;
-		}
-		*L = no(x,*L);
-	}
+	*L = no(x,*L);
 }
 
 void exibe(Lista L) {
@@ -40,6 +36,7 @@ void exibe(Lista L) {
 }
 
 int main(void) {
+	int x, ask=0;
 	Lista I = NULL;
 	ins_sr(4, &I);
 	ins_sr(1, &I);
@@ -48,4 +45,5 @@ int main(void) {
 	ins_sr(3, &I);
 	exibe(I);
 	
+	return 0;
 }
