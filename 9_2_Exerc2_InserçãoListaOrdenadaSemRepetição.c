@@ -4,44 +4,48 @@ não estiver em L. Em seguida, faça um programa para testar o funcionamento da 
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef int Item;
 typedef struct no {
-    Item item;
-    struct no *prox;
+	Item item;
+	struct no *prox;
 } *Lista;
 
-Lista no (Item x, Lista p) {
-    Lista n = malloc(sizeof(struct no));
-    n->item = x;
-    n->prox = p;
-    return n;
+Lista no(Item x, Lista p) {
+	Lista n = malloc(sizeof(struct no));
+	n -> item = x;
+	n -> prox = p;
+	return;
 }
 
-void ins_sr (Item x, Lista *L){
-    while( *L != NULL && (*L)->item < x)
-        L = &(*L)->prox;
-    *L = no(x, *L);
+void ins_sr (Item x, Lista *L) {
+	int i;
+	while(*L != NULL && (*L) -> item < x){
+		i = (*L) -> item;
+		if(x == i){
+			L = &(*L) -> prox;
+		}
+		*L = no(x,*L);
+	}
 }
 
-void exibe (Lista L){
-    printf("[");
-    while(L != NULL){
-        printf("%d, ", L->item);
-        L = L->prox;
-    }
-    printf("\b\b]");
-    printf("\n");
+void exibe(Lista L) {
+	printf("[");
+	while(L != NULL) {
+		printf("%d, ", L -> item);
+		L = L -> prox;
+	}
+	printf("\b\b]");
 }
 
-int main (void){
-    Lista I = NULL;
-    ins_sr (4, &I);
-    ins_sr (1, &I);
-    ins_sr (3, &I);
-    ins_sr (5, &I);
-    ins_sr (2, &I);
-    ins_sr (5, &I);
-    exibe(I);
-    return 0;
+int main(void) {
+	Lista I = NULL;
+	ins_sr(4, &I);
+	ins_sr(1, &I);
+	ins_sr(3, &I);
+	ins_sr(5, &I);
+	ins_sr(3, &I);
+	exibe(I);
+	
 }
