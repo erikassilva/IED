@@ -20,10 +20,13 @@ Arv arv (Arv e, Item x, Arv d) {
     return n;
 }
 
-void clone(Arv A){
-    if (A==NULL) return;
-    
-
+Arv clone (Arv A) {
+    if ( A == NULL ) return;
+    Arv n = malloc(sizeof(arv));
+    n->esq = clone(A->esq);
+    n->dir = clone(A->dir);
+    n->item = A->item;
+    return n;
 }
 
 void exibe (Arv A, int n) {
@@ -43,6 +46,8 @@ int main (void){
                     arv(NULL,   
                         4, 
                         NULL)));
-    exibe(I, 0);
+    //exibe(I, 0);
+    clone (I);
+
     return 0;
 }

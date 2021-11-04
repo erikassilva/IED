@@ -19,10 +19,12 @@ Arv arv (Arv e, Item x, Arv d) {
     return n;
 }
 
-int preOrdem (Arv A){
-    if ( A != NULL ) return;
-    preOrdem(A->esq);
-    preOrdem(A->dir);
+void preOrdem (Arv A){
+    if ( A != NULL ){
+        printf("%d ",A->item);
+        preOrdem(A->esq);
+        preOrdem(A->dir);
+    }
 }
 
 void exibe (Arv A, int n) {
@@ -35,7 +37,7 @@ void exibe (Arv A, int n) {
 int main (void){
     Arv I = arv(arv(arv(NULL, 4, NULL), 2, arv(NULL, 5, NULL)), 1, arv(arv(arv(NULL, 8, NULL), 6, arv(NULL, 9, NULL)), 3, arv(NULL, 7, NULL)));    
     exibe(I, 0);
-    printf("Em ordem: %d%d", emOrdem(I));
+    preOrdem(I);
 
     return 0;
 }
