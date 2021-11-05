@@ -19,13 +19,10 @@ Arv arv (Arv e, Item x, Arv d) {
     return n;
 }
 
-void poda(Arv A){
-    if (A==NULL){ 
-        printf("Folhas nao existem!");
-        return;
-    }
-    else
-        poda(A);
+int poda(Arv *A) {
+    if ( (*A)->dir == NULL && (*A)->esq == NULL )
+        free(A);
+        A = NULL;
 }
 
 void exibe (Arv A, int n) {

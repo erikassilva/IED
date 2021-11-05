@@ -22,10 +22,10 @@ Arv arv (Arv e, Item x, Arv d) {
 
 Arv clone (Arv A) {
     if ( A == NULL ) return;
-    Arv n = malloc(sizeof(arv));
+    Arv n = malloc(sizeof(struct arv));
+    n->item = A->item;
     n->esq = clone(A->esq);
     n->dir = clone(A->dir);
-    n->item = A->item;
     return n;
 }
 
@@ -36,18 +36,10 @@ void exibe (Arv A, int n) {
     exibe(A->esq, n+1);
 }
 
-int main (void){
-    Arv I = arv(arv(NULL, 
-                    2, 
-                    NULL), 
-                1, 
-                arv(NULL, 
-                    3, 
-                    arv(NULL,   
-                        4, 
-                        NULL)));
-    //exibe(I, 0);
-    clone (I);
-
-    return 0;
+int main(void) {
+	int n = 0;	
+	Arv I = arv(arv(arv(NULL, 4, NULL), 2, arv(NULL, 5, NULL)), 1, arv(arv(arv(NULL, 8, NULL), 6, arv(NULL, 9, NULL)), 3, arv(NULL, 7, NULL)));
+	exibe(I, 0);
+	printf("%d ", clone(I));
+	return 0;
 }
