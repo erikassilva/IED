@@ -19,10 +19,14 @@ Arv arv (Arv e, Item x, Arv d) {
     return n;
 }
 
-int poda(Arv *A) {
-    if ( (*A)->dir == NULL && (*A)->esq == NULL )
-        free(A);
-        A = NULL;
+Item poda(Arv *A) {
+   if( *A == NULL ) abort();
+   while( (*A)->dir != NULL ) A = &(*A)->dir;
+   Arv n = *A;
+   Item x = n->item;
+   *A = n->esq;
+   free(n);
+   return x;
 }
 
 void exibe (Arv A, int n) {
@@ -36,7 +40,7 @@ int main (void){
     Arv I = arv(arv(NULL, 2, NULL), 1, arv(NULL, 3, arv(NULL, 4, NULL)));
     exibe(I, 0);
     printf("Podando as folhas da arvore...\n");
-    poda(I);
+    poda(&I);
     exibe(I, 0);
     printf("Arvore podada!");
     return 0;

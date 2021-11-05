@@ -20,21 +20,12 @@ Arv arv (Arv e, Item x, Arv d) {
     return n;
 }
 
-/*void destroi(Lista *L){
-    while ( *L ){
-        Lista n = *L;
-        *L = n->prox;
-        free(n);
-    }
-}*/
-
-void destroi(Arv *A){
-    while ( *A ){
-        Arv n = *A;
-        *A = n->dir;
-        *A = n->esq;
-        free(n);
-    }
+void destroi(Arv *A) {
+   if( *A == NULL ) return;
+   destroi(&(*A)->esq);
+   destroi(&(*A)->dir);
+   free(*A);
+   *A = NULL;
 }
 
 void exibe (Arv A, int n) {
@@ -47,8 +38,9 @@ void exibe (Arv A, int n) {
 int main (void){
     Arv I = arv(arv(NULL, 2, NULL), 1, arv(NULL, 3, arv(NULL, 4, NULL)));
     exibe(I, 0);
-    printf("Destruindo arvore...");
-    destroi(I);
+    printf("Destruindo arvore...\n");
+    destroi(&I);
     exibe(I, 0);
+    printf("Arvore destruida!");
     return 0;
 }
