@@ -23,9 +23,9 @@ Arv arv (Arv e, Item x, Arv d) {
 Arv clone (Arv A) {
     if ( A == NULL ) return;
     Arv n = malloc(sizeof(struct arv));
-    n->item = A->item;
     n->esq = clone(A->esq);
     n->dir = clone(A->dir);
+    n->item = A->item;
     return n;
 }
 
